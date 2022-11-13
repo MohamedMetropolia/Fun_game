@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'VT323';
+    src: url("VT323-Regular.ttf") format("truetype");
+}
+
+html {
+    font-family: VT323;
+}
+
+
+body {
+    background-image: url("../img/background.webp");
+    width: 90%;
+    height: auto;
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 10rem;
+}
+
+#stats {
+    display: block;
+    font-size: 2rem;
+    background-color: #181b2b;
+    border: 6px white;
+    border-style: solid;
+    width: 500px;
+    text-align: left;
+    padding-left: 90px;
+    margin: auto;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+button {
+    font-size: 6rem;
+    font-family: VT323;
+    width: 30%;
+    color: #1e284f;
+    background: #c5dde6;
+}
+
+

@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'VT323';
+    src: url("VT323-Regular.ttf") format("truetype");
+}
+
+html {
+    font-family: VT323;
+}
+
+body {
+    width: 90%;
+    height: auto;
+    background-color: #181b2b;
+    margin: auto;
+}
+
+#topright {
+    font-size: 30px;
+    color: white;
+    padding-left: 20px;
+    margin-top: 35px;
+    float: right;
+    width: 26%;
+    border: 6px white;
+    border-style: solid;
+}
+
+#compass {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+
+#gameplay {
+    float: left;
+    width: 70%;
+    margin-top: 35px;
+    display: inline;
+    flex-wrap: wrap;
+    border: 6px white;
+    border-style: solid;
+}
+
+#textbox {
+    font-size: 2rem;
+    bottom: 35px;
+    text-align: left;
+    padding: 20px;
+    margin-top: 20px;
+    position: fixed;
+    width: 61%;
+    color: white;
+    border: 6px white;
+    border-style: solid;
+}
+
+.gametext {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
