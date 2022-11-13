@@ -44,4 +44,9 @@ button {
     background: #c5dde6;
 }
 
+button:active {
+    background-color: #181b2b;
+    color: white;
+}
+
 

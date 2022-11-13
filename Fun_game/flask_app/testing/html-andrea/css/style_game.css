@@ -20,7 +20,10 @@ body {
     padding-left: 20px;
     margin-top: 35px;
     float: right;
-    width: 26%;
+    right: 50px;
+    position: absolute;
+    display: inline;
+    width: 25%;
     border: 6px white;
     border-style: solid;
 }
@@ -57,4 +60,25 @@ body {
 .gametext {
     margin-block-start: 0;
     margin-block-end: 0;
+}
+
+#interrupt_buttons {
+    bottom: 20px;
+    right: 50px;
+    position: absolute;
+    display: inline;
+}
+
+.button {
+    font-size: 5rem;
+    font-family: VT323;
+    width: 300px;
+    color: #1e284f;
+    background: #c5dde6;
+    margin: 10px;
+}
+
+.button:active {
+    background-color: #181b2b;
+    color: white;
 }
