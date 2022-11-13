@@ -77,3 +77,8 @@ body {
     background: #c5dde6;
     margin: 10px;
 }
+
+.button:active {
+    background-color: #181b2b;
+    color: white;
+}
