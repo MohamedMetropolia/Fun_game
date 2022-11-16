@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint, render_template, redirect, url_for
-from home import home_bp
-from contact import contact_bp
 app = Flask(__name__)
 
-@app.route('/number/')
+"""@app.route('/number/')
 def print_list():
     return jsonify(list(range(5)))
 
@@ -12,34 +10,37 @@ def hello():
     return jsonify({"name": "Mido",
                     "address": "Finland",
                     "game": "fun_game",
-                    "school": "Metropolia"})
+                    "school": "Metropolia"})"""
 
 @app.route("/")
 def index():
-    return render_template('login.html', login_fail=False)
-
-@app.route("/")
-def data():
-    return render_template('data.html')
-
-@app.route('/data.html', methods=["POST", "GET"])
-def supplier_login():
-    if request.method == "POST":
-        output = request.get_json()
-        print(output)
-    return render_template('data.html')
+    return render_template('home.html', login_fail=False)
 
 @app.route('/game.html', methods=["POST", "GET"])
-def game_login():
+def gameplay():
     if request.method == "POST":
         output = request.get_json()
         print(output)
     return render_template('game.html')
 
-@app.route('/')
+@app.route('/gameover.html', methods=["POST", "GET"])
+def restart():
+    if request.method == "POST":
+        output = request.get_json()
+        print(output)
+    return render_template("gameover.html")
+
+@app.route('/home.html', methods=["POST", "GET"])
+def home():
+    if request.method == "POST":
+        output = request.get_json()
+        print(output)
+    return render_template("home.html")
+
+"""@app.route('/')
 def run_script():
     file = open(r'Python Project.py', 'r').read()
-    return exec(file)
+    return exec(file)"""
 
 """
 @app.route('/home/')
