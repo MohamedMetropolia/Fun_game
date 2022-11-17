@@ -185,7 +185,7 @@ def start_game():
         location = 2    # basement
         current_location(location)
         whereami()
-        directions = ["back"]
+        directions = ["left"]  # More directions
         print_slow("You find yourself walking downstairs to the basement!")
         print_slow("Under a dusty blanket seems to be a Sword")
         print_slow("It might come in handy later on...")
@@ -219,11 +219,11 @@ def start_game():
         location = 3  # Crossroad
         current_location(location)
         whereami()
-        directions = ["left", "right", "up"]
+        directions = ["left", "right", "up", "down"]
         print_slow("As you were moving you realize you've come to an intersection in the maze")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("sorry, here your options are left, right or up")
+            print_slow("sorry, here your options are left, right, up or down")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
             if direction == "left":
@@ -238,24 +238,28 @@ def start_game():
                 print("You decided on walking forward")
                 print("\n")
                 cemetery()
+            elif direction == "down":
+                print("You decided on walking back")
+                print("\n")
+                maze()
 
     # Possibly introducing the player to combat mechanics and death.
     def graveyard():
         location = 4  # Graveyard
         current_location(location)
         whereami()
-        directions = ["up", "back"]
+        directions = ["up", "right"]    # more directions
         print_slow("The left path leads outside to a graveyard")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go up or back")
+            print("Sorry, here you can only go up or right")
             direction = input("--> Which direction would you like to go? ")
         if direction in directions:
             if direction == "up":
                 print_slow("You've fallen to your death...END")
                 time.sleep(2)
                 death()
-            elif direction == "back":
+            elif direction == "right":
                 print("You decided to go back")
                 print("\n")
                 maze()
@@ -264,17 +268,17 @@ def start_game():
         location = 5  # Maze_2
         current_location(location)
         whereami()
-        directions = ["left", "right", "up"]
+        directions = ["left", "right", "up", "down"]
         print_slow("You find yourself entering a forest")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("Your options here are left, right or up")
+            print_slow("Your options here are left, right, up or down")
             direction = input("--> Which direction would you like to go? ")
         if direction in directions:
             if direction == "left":
                 print("You decided on walking left")
                 print("\n")
-                necropolis()
+                crossroad()
             elif direction == "right":
                 print("You decided on walking right")
                 print("\n")
@@ -283,16 +287,20 @@ def start_game():
                 print("You decided on walking forward")
                 print("\n")
                 shed()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                necropolis()
 
     def necropolis():
         location = 6  # Previously Graveyard_2
         current_location(location)
         whereami()
-        directions = ["back", "left"]
+        directions = ["up", "left"]
         print_slow("The left path leads outside to Necropolis")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go back or left")
+            print("Sorry, here you can only go up or left")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
             if direction == "left":
@@ -335,7 +343,7 @@ def start_game():
                 """)
                 time.sleep(2)
                 death()
-            elif direction == "back":
+            elif direction == "up":
                 print("You've walked back")
                 print("\n")
                 forest()
@@ -344,14 +352,14 @@ def start_game():
         location = 7
         current_location(location)
         whereami()
-        directions = ["right", "left"]
+        directions = ["right", "left", "up", "down"]
         print_slow("The right path leads outside to a fork")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go right or left")
+            print("Sorry, here you can only go right, left, right or up")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
-            if direction == "right":
+            if direction == "up":
                 print_slow("You've found a Demogorgon in the room")
                 print_slow("if you happen to have a weapon you might find a way out")
                 print("""                            ,-.                               
@@ -402,7 +410,7 @@ def start_game():
                     time.sleep(2)
                     death()
                 # Need some piece of code that check in the DB if the user have certain item
-            elif direction == "left":
+            elif direction == "down":
                 if check_inventory() == "Gold":
                     print_slow(f"You were able to sell off the gold you found for an extra 1000 points!")
                 print("congratulations! you have found a way out!")
@@ -414,7 +422,7 @@ def start_game():
         location = 8    # treasure_room
         current_location(location)
         whereami()
-        directions = ["back"]
+        directions = ["right"]      # More directions
         print_slow("You find yourself walking into a treasure room!")
         print_slow("It is your lucky day, you have found some gold")
         decision = input("-->, would you like to take it? y/n: ").lower()
