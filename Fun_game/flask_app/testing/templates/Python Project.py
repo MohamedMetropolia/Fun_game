@@ -35,7 +35,7 @@ def start_game():
         for text in str + '\n':
             sys.stdout.write(text)
             sys.stdout.flush()
-            time.sleep(0.)  # change to 0.01 after testing or 0.0 during testing
+            time.sleep(0)  # change to 0.01 after testing or 0.0 during testing
 
 # function that clears text
     def clear():
@@ -160,7 +160,7 @@ def start_game():
         current_location(location)
         whereami()
         directions = ["left", "right", "up"]
-        print_slow("Enter left, right or up to move into a direction")
+        print_slow("Choose a direction among left, right or up to move  ")
         print_slow(f"Your current inventory is: {check_inventory()}")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
@@ -176,7 +176,7 @@ def start_game():
                 print("\n")
                 basement()
             elif direction == "up":
-                print("You decided on walking forward")
+                print("You decided on walking up")
                 print("\n")
                 crossroad()
 
@@ -185,8 +185,9 @@ def start_game():
         location = 2    # basement
         current_location(location)
         whereami()
-        directions = ["back"]
-        print_slow("You find yourself walking downstairs to the basement!")
+        directions = ["left", "right", "up"]
+        print_slow("You find yourself walking downstairs to the basement!") # Needs elaboration
+        # Condition to check wether the user already has this item
         print_slow("Under a dusty blanket seems to be a Sword")
         print_slow("It might come in handy later on...")
         print("""
@@ -208,22 +209,31 @@ def start_game():
             print("\n")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("sorry, here you can only go back")
+            print("sorry, here you can only go left, right, up")
             direction = input("--> Which direction would you like to go? ")
         if direction in directions:
-            print("You have decided to walk back")
-            print("\n")
-            maze()
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                maze()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                # New room
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                # New room
 
     def crossroad():
         location = 3  # Crossroad
         current_location(location)
         whereami()
-        directions = ["left", "right", "up"]
+        directions = ["left", "right", "up", "down"]
         print_slow("As you were moving you realize you've come to an intersection in the maze")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("sorry, here your options are left, right or up")
+            print_slow("sorry, here your options are left, right, up or down")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
             if direction == "left":
@@ -233,69 +243,83 @@ def start_game():
             elif direction == "right":
                 print("You decided on walking right")
                 print("\n")
-                forest()          # second Maze
+                forest()
             elif direction == "up":
                 print("You decided on walking forward")
                 print("\n")
                 cemetery()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                maze()
 
     # Possibly introducing the player to combat mechanics and death.
     def graveyard():
         location = 4  # Graveyard
         current_location(location)
         whereami()
-        directions = ["up", "back"]
-        print_slow("The left path leads outside to a graveyard")
+        directions = ["up", "right", "left"]
+        print_slow("This path leads you outside to a graveyard")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go up or back")
+            print("Sorry, here you can only go up, left or right")
             direction = input("--> Which direction would you like to go? ")
         if direction in directions:
             if direction == "up":
+                # Include questions or encounter before death
                 print_slow("You've fallen to your death...END")
                 time.sleep(2)
                 death()
-            elif direction == "back":
-                print("You decided to go back")
+            elif direction == "right":
+                print("You decided to go right")
                 print("\n")
                 maze()
+            elif direction == "left":
+                print("You decided to go left")
+                print("\n")
+                # New room
 
     def forest():
-        location = 5  # Maze_2
+        location = 5
         current_location(location)
         whereami()
-        directions = ["left", "right", "up"]
+        directions = ["left", "right", "up", "down"]
         print_slow("You find yourself entering a forest")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("Your options here are left, right or up")
+            print_slow("Your options here are left, right, up or down")
             direction = input("--> Which direction would you like to go? ")
         if direction in directions:
             if direction == "left":
                 print("You decided on walking left")
                 print("\n")
-                necropolis()
+                crossroad()
             elif direction == "right":
                 print("You decided on walking right")
                 print("\n")
                 fork()
             elif direction == "up":
-                print("You decided on walking forward")
+                print("You decided on walking up")
                 print("\n")
                 shed()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                necropolis()
 
     def necropolis():
-        location = 6  # Previously Graveyard_2
+        location = 6
         current_location(location)
         whereami()
-        directions = ["back", "left"]
+        directions = ["down", "left", "up"]
         print_slow("The left path leads outside to Necropolis")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go back or left")
+            print("Sorry, here you can only go down, left or up")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
             if direction == "left":
+                # Include questions or encounter before death
                 print_slow("As you tried moving to the left a horde of undead dogs attacked you...END")
                 print("""
                              __
@@ -335,23 +359,27 @@ def start_game():
                 """)
                 time.sleep(2)
                 death()
-            elif direction == "back":
-                print("You've walked back")
+            elif direction == "up":
+                print("You've walked up")
                 print("\n")
                 forest()
+            elif direction == "down":
+                print("You've walked up")
+                print("\n")
+                # New room
 
     def fork():
         location = 7
         current_location(location)
         whereami()
-        directions = ["right", "left"]
-        print_slow("The right path leads outside to a fork")
+        directions = ["right", "left", "up", "down"]
+        print_slow("This path leads you outside to a fork")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print("Sorry, here you can only go right or left")
+            print("Sorry, here you can only go up, down, right or left")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
-            if direction == "right":
+            if direction == "up":
                 print_slow("You've found a Demogorgon in the room")
                 print_slow("if you happen to have a weapon you might find a way out")
                 print("""                            ,-.                               
@@ -394,28 +422,35 @@ def start_game():
                         print("You cowardly decide to feed the beast with your flesh")
                         time.sleep(2)
                         death()
-
-
                 else:
                     print_slow("Empty handed there is nothing you can do against the beast...")
                     print_slow("You've become the beast's chew toy...END")
                     time.sleep(2)
                     death()
                 # Need some piece of code that check in the DB if the user have certain item
-            elif direction == "left":
+            elif direction == "down":
                 if check_inventory() == "Gold":
                     print_slow(f"You were able to sell off the gold you found for an extra 1000 points!")
                 print("congratulations! you have found a way out!")
                 print_slow(f"you finish the game with {check_inventory()}")
                 # SQL code SELECT the items that were collected along the game and show them to the user
                 replay()
+            elif direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                forest()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                # New Room
 
     def treasure_room():    # new added function
         location = 8    # treasure_room
         current_location(location)
         whereami()
-        directions = ["back"]
+        directions = ["up", "right", "left"]
         print_slow("You find yourself walking into a treasure room!")
+        # Condition to check wether the user already has this item
         print_slow("It is your lucky day, you have found some gold")
         decision = input("-->, would you like to take it? y/n: ").lower()
         if decision == "y":
@@ -425,22 +460,31 @@ def start_game():
         # Here we need to add statement of item No. 2 ("Gold")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("You can only go back from here")
+            print_slow("You can only go up, right or left from here")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
-            print("You have decided to walk back")
-            print("\n")
-            crossroad()
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                # New Room
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                crossroad()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                # New Room
 
     def cemetery():     # new added function
         location = 9  # cemetery
         current_location(location)
         whereami()
-        directions = ["right", "back"]
+        directions = ["up", "down", "right"]
         print_slow("Going forwards leads you into a cemetery")
         direction = input("--> Which direction would you like to go? ").lower()
         while direction not in directions:
-            print_slow("Sorry, here you can only go to the right or back")
+            print_slow("Sorry, here you can only go to the up or down")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
             if direction == "right":
@@ -499,17 +543,22 @@ def start_game():
                 death()
                 # Adding the option  if the player wants to play again
                 start_game()
-            elif direction == "back":
+            elif direction == "down":
                 print("You've walked back")
                 print("\n")
                 crossroad()
+            elif direction == "up":
+                print("You've walked up")
+                print("\n")
+                # New Room
 
     def shed():         # new added function
         location = 10    # shed
         current_location(location)
         whereami()
-        directions = ["back"]
+        directions = ["up", "down"]
         print_slow("You find yourself walking in a shed full of feathers!")
+        # Condition to check wether the user already has this item
         print("""
         
     (`/\´      (`/\´            (`/\´      (`/\´
@@ -529,8 +578,45 @@ def start_game():
             print_slow("You can only go back from here")
             direction = input("--> Which direction would you like to go? ").lower()
         if direction in directions:
-            print("You have decided to walk back")
-            print("\n")
-            forest()
+            if direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                # New Room
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                forest()
     maze()
 start_game()
+
+
+"""    
+Template for the new rooms
+def NewRoom():
+        location = 3   # Crossroad
+        current_location(location)
+        whereami()
+        directions = ["left", "right", "up", "down"]
+        print_slow("Piece of text that explain where is the USER")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left, right, up or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                # Next Room ()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                # Next Room ()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                # Next Room ()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                # Next Room ()
+"""
