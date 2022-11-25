@@ -1,15 +1,37 @@
-{# templates/login.html #}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Game</title>
-
+    <meta charset="UTF-8">
+    <title>Fun Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../static/css/style_game.css" rel="stylesheet">
+</head>
 <body>
-  <link rel="stylesheet" href=../static/login.css>
-
-  <script src="../static/Python%20Project.py"></script>
+    <section id= "gamescreen">
+        <img src="../static/img/gameplay.jpg" id="gameplay" alt="gameplay">
+    </section>
+    <section id="topright">
+        <p>Username: </p>
+        <p>Current item: </p>
+        <p>Current location: </p>
+        <img src="../static/img/compass.png" id="compass" alt="compass">
+    </section>
+    <section id="textbox">
+        <p class="gametext">You found an item. Do you want to keep it?</p>
+        <p class="gametext">>>> Yes</p>
+        <p class="gametext">>>> No</p>
+    </section>
+    <section id="interrupt_buttons">
+        <section>
+            <a href="home.html">
+                <button class="button">RESTART</button>
+            </a>
+        </section>
+        <section>
+            <a href="gameover.html">
+                <button class="button">QUIT</button>
+            </a>
+        </section>
+    </section>
 </body>
-
 </html>
