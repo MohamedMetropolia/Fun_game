@@ -43,16 +43,10 @@ values ("Nothing"),
        ("Sword");
 
 insert into location(description)
-values ("Maze"),
-       ("Basement"),
-       ("Crossroad"),
-       ("Graveyard"),
-       ("Forest"),
-       ("Necropolis"),
-       ("Fork"),
-       ("Treasure Room"),
-       ("Cementery"),
-       ("Shed");
+values ("Maze"),("Basement"),("Crossroad"),("Graveyard"),("Forest"),("Necropolis"),("Fork"),
+       ("Treasure Room"),("Cementery"),("Shed"),("Bandit Camp"),("Pond"),("Inn"),("Shrine"),
+       ("Scholar's Lair"),("Hut"),("Chapel"),("Cave"),("Troll Hideout"), ("Marsh"),
+       ("Broken Portal"), ("Bone Field"), ("Wolf");
 
 insert into current_game(player, current_location, inventory, score)
 values ("Starting player", 1, 1, 0)
