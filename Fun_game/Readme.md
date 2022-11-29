@@ -6,4 +6,4 @@ There are various types of items in the areas that the player can collect throug
 There are two outcomes: the player will die if they make the wrong decision, but with the correct choices they can reach the exit of the maze.
 
 
-### Created by: Mohamed, Jeferson, Andrea, MD Shamiul
+### Created by: Mohamed, Jeferson, Andrea, Immi
