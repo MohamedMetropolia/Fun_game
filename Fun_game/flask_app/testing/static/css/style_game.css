@@ -48,18 +48,18 @@ body {
     font-size: 2rem;
     bottom: 35px;
     text-align: left;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 1.55%;
+    margin-top: 2%;
     position: fixed;
-    width: 60.4%;
+    width: 60%;
     color: white;
     border: 6px white;
     border-style: solid;
 }
 
 .gametext {
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block-start: 1%;
+    margin-block-end: -2%;
 }
 
 #interrupt_buttons {
@@ -71,7 +71,7 @@ body {
 
 .button {
     font-size: 5rem;
-    font-family: VT323;
+    font-family: VT323, serif;
     width: 300px;
     color: #1e284f;
     background: #c5dde6;
@@ -81,4 +81,13 @@ body {
 .button:active {
     background-color: #181b2b;
     color: white;
+}
+
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+  .body{
+      width: 80%;
+  }
 }

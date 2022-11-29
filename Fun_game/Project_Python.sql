@@ -29,7 +29,7 @@ create table current_game
      player           varchar(40) DEFAULT NULL,
      current_location int(40)     DEFAULT NULL,
      inventory        int(40) DEFAULT NULL,
-     score            int(40) not null,
+     score            int(40) DEFAULT null,
      last_updated     timestamp,
     PRIMARY KEY (id),
     FOREIGN KEY (current_location) REFERENCES location (id),
