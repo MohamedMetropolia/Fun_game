@@ -219,11 +219,11 @@ def start_game():
             elif direction == "right":
                 print("You decided on walking right")
                 print("\n")
-                # New room
+                hut()
             elif direction == "up":
                 print("You decided on walking up")
                 print("\n")
-                # New room
+                banditcamp()
 
     def crossroad():
         location = 3  # Crossroad
@@ -277,7 +277,7 @@ def start_game():
             elif direction == "left":
                 print("You decided to go left")
                 print("\n")
-                # New room
+                chapel()
 
     def forest():
         location = 5
@@ -366,7 +366,7 @@ def start_game():
             elif direction == "down":
                 print("You've walked up")
                 print("\n")
-                # New room
+                pond()
 
     def fork():
         location = 7
@@ -466,7 +466,7 @@ def start_game():
             if direction == "left":
                 print("You decided on walking left")
                 print("\n")
-                # New Room
+                cave()
             elif direction == "right":
                 print("You decided on walking right")
                 print("\n")
@@ -474,9 +474,303 @@ def start_game():
             elif direction == "up":
                 print("You decided on walking up")
                 print("\n")
-                # New Room
+                marsh()
 
-    def cemetery():     # new added function
+    def banditcamp():
+        location = 11
+        current_location(location)
+        whereami()
+        directions = ["right", "down"]
+        print_slow("You find yourself in the middle of a bandit camp, they don't look friendly")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are right or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                pond()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                basement()
+
+    def pond():
+        location = 12
+        current_location(location)
+        whereami()
+        directions = ["left", "right", "up", "down"]
+        print_slow("You hear a splashing and see  a pond up ahead, a mermaid greets you from the water")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left, right, up or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                banditcamp()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                inn()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                necropolis()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                hut()
+
+    def inn():
+        location = 13
+        current_location(location)
+        whereami()
+        directions = ["left", "right"]
+        print_slow("The smell of food and the sound of laughter greets you as you find yourself at the inn.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left, right")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                pond()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                shrine()
+
+    def shrine():
+        location = 14
+        current_location(location)
+        whereami()
+        directions = ["left", "up"]
+        print_slow("A holy glow radiates from between the trees. "
+                   "A stone shrine is sitting in a clearing in the woods, surrounded by offerings.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left or up")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                inn()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                scholarlair()
+
+    def scholarlair():
+        location = 15
+        current_location(location)
+        whereami()
+        directions = ["left", "down"]
+        print_slow("A twirling tower looms above you. You see books, tomes and scrolls inside, "
+                   "and a strong arcane energy fills the air")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                fork()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                shrine()
+
+    def hut():
+        location = 16
+        current_location(location)
+        whereami()
+        directions = ["left", "up"]
+        print_slow("A worn-down hut stands near the entrance to the forest. "
+                   "An old man is sitting on the porch, carving a wooden figure. "
+                   "From the looks of it, he is making a wooden wolf.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left or up")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                basement()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                pond()
+
+    def chapel():
+        location = 17
+        current_location(location)
+        whereami()
+        directions = ["right", "up"]
+        print_slow("A sense of dread sits in your stomach as you approach the cold, stone walls of a chapel. "
+                   "The air inside is damp, and the very ground beneath your feet seems to hold its breath.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are right or up")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                graveyard()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                cave()
+
+    def cave():
+        location = 18
+        current_location(location)
+        whereami()
+        directions = ["right", "up", "down"]
+        print_slow("You approach an opening in the mountain which is covered in stalactites. "
+                   "It looks like a beast, baring its teeth at you.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are right, up or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                treasure_room()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                trollhideout()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                chapel()
+
+    def trollhideout():
+        location = 19
+        current_location(location)
+        whereami()
+        directions = ["right", "down"]
+        print_slow("A putrid smell hits your nose as you find "
+                   "yourself face-to-face with three hulking figures - trolls!")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are right or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                marsh()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                cave()
+
+    def marsh():
+        location = 20
+        current_location(location)
+        whereami()
+        directions = ["left", "up", "down"]
+        print_slow("Your feet stick to the ground as you make your way through a marsh. "
+                   "A thick fog obscures your vision as you follow the near-invisible path. "
+                   "Despite the fog, you're certain something is watching you.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left, up or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                trollhideout()
+            elif direction == "up":
+                print("You decided on walking up")
+                print("\n")
+                brokenportal()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                treasure_room()
+
+    def brokenportal():
+        location = 21
+        current_location(location)
+        whereami()
+        directions = ["right", "down"]
+        print_slow("A lone stone structure lies ahead of you, shattered and broken. "
+                   "The grass around it is burnt, and you find strange objects around it - "
+                   "items not from this world, you're certain.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are right or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                bonefield()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                marsh()
+    def bonefield():
+        location = 22
+        current_location(location)
+        whereami()
+        directions = ["left", "right", "down"]
+        print_slow("The stones under your feet turn lighter and lighter, "
+                   "until you realise they're not stones at all. "
+                   "The field ahead of you shines an ivory white, "
+                   "full of bones of various sizes and sources. "
+                   "What brought them here? You'd rather not think about it too much.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left, right, or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                brokenportal()
+            elif direction == "right":
+                print("You decided on walking right")
+                print("\n")
+                wolf()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                cemetery()
+
+    def wolf():
+        location = 23
+        current_location(location)
+        whereami()
+        directions = ["left", "down"]
+        print_slow("You hear pained whining coming from underneath a fallen tree - "
+                   "a wolf has been trapped underneath! It's trying to free itself, but seems to be making no progress.")
+        direction = input("--> Which direction would you like to go? ").lower()
+        while direction not in directions:
+            print_slow("sorry, here your options are left or down")
+            direction = input("--> Which direction would you like to go? ").lower()
+        if direction in directions:
+            if direction == "left":
+                print("You decided on walking left")
+                print("\n")
+                bonefield()
+            elif direction == "down":
+                print("You decided on walking down")
+                print("\n")
+                shed()
+    def cemetery():
         location = 9  # cemetery
         current_location(location)
         whereami()
@@ -550,7 +844,7 @@ def start_game():
             elif direction == "up":
                 print("You've walked up")
                 print("\n")
-                # New Room
+                bonefield()
 
     def shed():         # new added function
         location = 10    # shed
@@ -581,7 +875,7 @@ def start_game():
             if direction == "up":
                 print("You decided on walking up")
                 print("\n")
-                # New Room
+                wolf()
             elif direction == "down":
                 print("You decided on walking down")
                 print("\n")
@@ -593,7 +887,7 @@ start_game()
 """    
 Template for the new rooms
 def NewRoom():
-        location = 3   # Crossroad
+        location = 3  
         current_location(location)
         whereami()
         directions = ["left", "right", "up", "down"]
