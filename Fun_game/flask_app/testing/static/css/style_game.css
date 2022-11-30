@@ -82,3 +82,7 @@ body {
     background-color: #181b2b;
     color: white;
 }
+
+.hide {
+  display: none;
+}

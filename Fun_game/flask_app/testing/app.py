@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint, render_template, redirect, url_for
+
+
+
 app = Flask(__name__)
 
 """@app.route('/number/')
@@ -36,6 +39,10 @@ def home():
         output = request.get_json()
         print(output)
     return render_template("home.html")
+
+@app.route('/create_player/', methods=["POST"])
+def create_player():
+
 
 """@app.route('/')
 def run_script():

@@ -1,0 +1,33 @@
+{
+  "player_name": "John",
+  "directions": ["left", "right", "up"],
+  "location_id": 2,
+  "location_name": "basement",
+  "map_image": "basement_map.png",
+  "encounter": {
+    "encounter_text": "You've found a Demogorgon in the room.\nif you happen to have a weapon you might find a way out",
+    "encounter_image": "demogorgon.png",
+    "use_item_question": "would you like to use the Sword?",
+    "encounter_win_url": "/demogorgon/win",
+    "encounter_win_text": "Congratulations! you have found a way out",
+    "encounter_loose_url": "/death",
+    "encounter_loose_text": "You cowardly decide to feed the beast with your flesh"
+  },
+  "inventory": {
+    "id": 1,
+    "description": "sword"
+  },
+  "decision": {
+    "decision_text": "Under a dusty blanket seems to be a Sword\nIt might come in handy later on...\n-->, would you take it?",
+    "options": [
+      {
+        "button_text": "yes",
+        "api_url": "/take/sword"
+      },
+      {
+        "button_text": "no",
+        "api_url": 0
+      }
+    ]
+  }
+}
