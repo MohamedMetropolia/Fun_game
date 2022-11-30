@@ -16,7 +16,7 @@ move_request_example = {
   "location_text": "You found yourself in a basement.",
   "map_image": "basement_map.png",
   "encounter": {
-    "encounter_text": "You've found a Demogorgon in the room.\nif you happen to have a weapon you might find a way out",
+    "encounter_text": "You've found a Demogorgon in the room.if you happen to have a weapon you might find a way out",
     "encounter_image": "../img/demogorgon.png",
     "riddle_question": "riddle generator api text",
     "riddle_answer": "riddle generator api answer",

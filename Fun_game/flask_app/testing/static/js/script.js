@@ -156,36 +156,32 @@ function renderLocation(location) {
   //add item pick up button handlers
   //call the pick up api to add the item to the player
 
-  //unhide encounter section if there is any
+  //encounter section
   if (location.encounter.encounter_text) {
     document.querySelector('#item_pickup').classList.add('hide');
-    document.querySelector('#item_no_button').
-        addEventListener('click', function(evt) {
-          let riddleUserInput = document.getElementById(
-              'riddle_user_input').value;
-          if (riddleUserInput === location.encounter.riddle_answer) {
-            document.querySelector('#item_pickup').classList.remove('hide');
-          } else {
-            if (riddleUserInput == '') {
-              document.querySelector('#riddle_correct_answer').
-                  setAttribute('style', 'display:none');  //we need DIS and show with display:block
-            } else {
-              document.querySelector(
-                  '#riddle_correct_answer').innerHTML = `Correct answer: ` +
-                  location.encounter.riddle_answer;
-              document.querySelector('#riddle_correct_answer').
-                  classList.
-                  remove('hide');
-            }
-          }
+    document.addEventListener('input', function(evt) {
+      let riddleUserInput = document.getElementById('riddle_user_input').value;
+      if (riddleUserInput === location.encounter.riddle_answer) {
+        document.querySelector('#item_pickup').classList.remove('hide');
+      }
+      else {
+        if (riddleUserInput == '') {
+          document.querySelector('#riddle_correct_answer').
+              setAttribute('style', 'display:none');  //we need DIS and show with display:block
+        } else {
+          document.querySelector('#riddle_correct_answer').innerHTML = `Correct answer: ` +
+              location.encounter.riddle_answer;
+          document.querySelector('#riddle_correct_answer').classList.remove('hide');
+        }
+      }
 
-          document.querySelector('#encounter').classList.remove('hide');
-          document.querySelector(
-              '#encounter_text').innerHTML = location.encounter.encounter_text;
-          document.querySelector(
-              '#riddle_question').innerHTML = location.encounter.riddle_question;
+      document.querySelector('#encounter').classList.remove('hide');
+      document.querySelector(
+          '#encounter_text').innerHTML = location.encounter.encounter_text;
+      document.querySelector(
+          '#riddle_question').innerHTML = location.encounter.riddle_question;
 
-        });
+    });
   }
 
   //add the handlers like the item handlers top the buttons

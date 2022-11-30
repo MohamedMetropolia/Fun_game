@@ -4,7 +4,7 @@
 }
 
 html {
-    font-family: VT323;
+    font-family: VT323, serif;
 }
 #main {
     width: 95%;
@@ -21,7 +21,6 @@ body {
 
 #topleft {
     flex: 65%;
-
 }
 
 #topright {
@@ -33,7 +32,6 @@ body {
 }
 
 #bottomright {
-    align-items: right;
     flex: 35%;
     text-align: right;
 }
@@ -43,6 +41,7 @@ body {
     color: white;
     float: right;
     padding: 20px;
+    margin-left: 20px;
     text-align: left;
     border: 6px white;
     border-style: solid;
@@ -56,6 +55,8 @@ body {
     border: 6px white;
     border-style: solid;
     margin-left: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .item_button {
@@ -84,15 +85,17 @@ body {
     font-size: 2rem;
     box-sizing: border-box;
     color: #1e284f;
+    flex-wrap: wrap;
     background-color: #c5dde6;
 }
 
 #submit_riddle_answer {
     font-size: 2rem;
     font-family: VT323;
-    width: 100px;
+    width: 200px;
     color: #1e284f;
     background: #c5dde6;
+    margin-left: 10px;
 }
 
 #loader {
