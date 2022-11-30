@@ -34,9 +34,9 @@ body {
 }
 
 
-#gameplay {
+.map {
     float: left;
-    width: 70%;
+    width: 60%;
     margin-top: 35px;
     display: inline;
     flex-wrap: wrap;
@@ -51,7 +51,7 @@ body {
     padding: 20px;
     margin-top: 20px;
     position: fixed;
-    width: 60.4%;
+    width: 52%;
     color: white;
     border: 6px white;
     border-style: solid;

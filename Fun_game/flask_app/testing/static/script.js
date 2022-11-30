@@ -4,7 +4,6 @@ const loginErrorMsg = document.getElementById("login-error-msg");
 loginErrorMsg.style.opacity = 1
 
 const apiUrl = 'http://127.0.0.1:5000/';
-const startLoc = '1';
 
 document.querySelector('#player-form').addEventListener('submit', function (evt) {
   evt.preventDefault();
@@ -105,21 +104,44 @@ function fetchLocation(number) {
   return getData(apiUrl + "/location/" + number)
 }
 
-function moveHandlerUp(evt) { //we need this for all directions
+//player movement to new area
+function moveHandlerUp(evt) {
   evt.preventDefault();
   let moveResponse = sendMoveToApi(apiUrl + "/move/up")
   renderLocation(moveResponse);
 }
 
+function moveHandlerDown(evt) {
+  evt.preventDefault();
+  let moveResponse = sendMoveToApi(apiUrl + "/move/down")
+  renderLocation(moveResponse);
+}
+
+function moveHandlerRight(evt) {
+  evt.preventDefault();
+  let moveResponse = sendMoveToApi(apiUrl + "/move/right")
+  renderLocation(moveResponse);
+}
+
+function moveHandlerLeft(evt) {
+  evt.preventDefault();
+  let moveResponse = sendMoveToApi(apiUrl + "/move/left")
+  renderLocation(moveResponse);
+}
+
 function renderLocation(location) {
-  //hide all sections and clear e.g. document.querySelector('.goal').classList.add('hide');
+  //hide all map pieces
+  document.querySelector('.map').classList.add('hide');
   //this is already a JS object
 
   //add player name, location and item to the correct field in the document
-
+  document.querySelector('username').innerHTML = `Username: ${playerName}`
+  document.querySelector('current_item').innerHTML = `Current item: ${item}` //todo: define current item variable
+  document.querySelector('current_location').innerHTML = `Current location: ${location}`
   //render map
 
   //add location text to the html
+  document.querySelector('.gametext').innerHTML = locationText //todo: needs to be defined
 
   //if there is item pick up, unhide item pick up section
   //display all options with the flavour text
@@ -143,12 +165,12 @@ function startGame() {
   let playerName = askPlayerName()
   // init game in python with the player name
   let initGameResponse = initGame(playerName)
-  //check if init game was successfull
+  //check if init game was successful
   //if (!initGameResponse.ok)....
   //start loading image
 
   //get first area data
-  let firstLocation = fetchLocation(1) //fetch first location
+  let startLoc = fetchLocation(1) //fetch first location
   //hide loading image
 
   //parse location data and add it to html
