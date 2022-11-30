@@ -31,6 +31,7 @@ def restart():
     if request.method == "POST":
         output = request.get_json()
         print(output)
+        jsonify(render_template("Python Project.py"))
     return render_template("gameover.html")
 
 @app.route('/home.html', methods=["POST", "GET"])
@@ -48,7 +49,6 @@ def create_player():
 def run_script():
     file = open(r'Python Project.py', 'r').read()
     return exec(file)"""
-
 """
 @app.route('/home/')
 def home():
