@@ -1,6 +1,13 @@
 from flask import Flask, jsonify, request, Blueprint, render_template, redirect, url_for
+import json
+import os
 
+import mysql.connector
+from dotenv import load_dotenv
+from flask_cors import CORS
 
+import config
+from fun_game import Main
 
 app = Flask(__name__)
 
@@ -31,7 +38,7 @@ def restart():
     if request.method == "POST":
         output = request.get_json()
         print(output)
-        jsonify(render_template("Python Project.py"))
+        jsonify(render_template("fun_game.py"))
     return render_template("gameover.html")
 
 @app.route('/home.html', methods=["POST", "GET"])
@@ -43,11 +50,12 @@ def home():
 
 @app.route('/create_player/', methods=["POST"])
 def create_player():
+    player_name = new_player(name)
 
 
 """@app.route('/')
 def run_script():
-    file = open(r'Python Project.py', 'r').read()
+    file = open(r'fun_game.py', 'r').read()
     return exec(file)"""
 """
 @app.route('/home/')
