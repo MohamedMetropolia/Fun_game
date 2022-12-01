@@ -2,29 +2,30 @@ from flask import Flask, jsonify, request, Blueprint, render_template, redirect,
 import json
 import os
 from flask_cors import CORS, cross_origin
+import fun_game
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 # mock data for JS testing
-move_request_example = {
+basement_example = {
   "status": 200,
   "player_name": "John",
   "directions": ["left", "right", "up"],
   "location_id": 2,
-  "location_name": "basement",
-  "location_text": "You found yourself in a basement.",
+  "location_name": "Basement",
+  "location_text": "You are walking downstairs to a cold and damp place with little to no light. It seems to be an old basement.",
   "map_image": "basement_map.png",
   "encounter": {
-    "encounter_text": "You've found a Demogorgon in the room.if you happen to have a weapon you might find a way out",
-    "encounter_image": "../img/demogorgon.png",
-    "riddle_question": "riddle generator api text",
-    "riddle_answer": "riddle generator api answer",
-    "use_item_decision": "would you like to use the Sword?",
-    "encounter_win_url": "/demogorgon/win",
-    "encounter_win_text": "Congratulations! you have found a way out",
-    "encounter_loose_url": "/death",
-    "encounter_loose_text": "You cowardly decide to feed the beast with your flesh"
+    "encounter_text": "",
+    "encounter_image": "",
+    "riddle_question": "",
+    "riddle_answer": "",
+    "use_item_decision": "",
+    "encounter_win_url": "",
+    "encounter_win_text": "",
+    "encounter_loose_url": "",
+    "encounter_loose_text": ""
   },
   "item": {
     "id": 1,
@@ -32,11 +33,11 @@ move_request_example = {
     "description": "Sword"
   },
   "item_decision": {
-    "item_decision_text": "Under a dusty blanket seems to be a Sword\nIt might come in handy later on...\n-->, would you take it?",
+    "item_decision_text": "Under a dusty blanket there seems to be a Sword. It might come in handy later on... Would you take it?",
     "options": [
       {
         "button_text": "yes",
-        "api_url": "/take/sword"
+        "api_url": "take/sword"
       },
       {
         "button_text": "no",
@@ -46,7 +47,85 @@ move_request_example = {
   }
 }
 
+start_location = {
+  "status": 200,
+  "player_name": "John",
+  "directions": ["left", "right", "up"],
+  "location_id": 1,
+  "location_name": "Maze",
+  "location_text": "You find yourself waking up in a maze. You have to find the exit in order to survive.",
+  "map_image": "maze_map.png",
+  "encounter": {
+    "encounter_text": "",
+    "encounter_image": "",
+    "riddle_question": "",
+    "riddle_answer": "",
+    "use_item_decision": "",
+    "encounter_win_url": "",
+    "encounter_win_text": "",
+    "encounter_loose_url": "",
+    "encounter_loose_text": ""
+  },
+  "item": {
+    "id": 0,
+    "image": "",
+    "description": ""
+  },
+  "item_decision": {
+    "item_decision_text": "",
+    "options": [
+      {
+        "button_text": "",
+        "api_url": ""
+      },
+      {
+        "button_text": "",
+        "api_url": ""
+      }
+    ]
+  }
+}
 
+
+
+graveyard_example = {
+  "status": 200,
+  "player_name": "John",
+  "directions": ["left", "right"],
+  "location_id": 4,
+  "location_name": "Graveyard",
+  "location_text": "In the distance you see slim sharp silhouettes in the fog. As you walk closer, you can see those are tombstones and you are in the middle of a graveyard.",
+  "map_image": "graveyard_map.png",
+  "encounter": {
+    "encounter_text": "",
+    "encounter_image": "",
+    "riddle_question": "",
+    "riddle_answer": "",
+    "use_item_decision": "",
+    "encounter_win_url": "",
+    "encounter_win_text": "",
+    "encounter_loose_url": "",
+    "encounter_loose_text": ""
+  },
+  "item": {
+    "id": 0,
+    "image": "",
+    "description": ""
+  },
+  "item_decision": {
+    "item_decision_text": "",
+    "options": [
+      {
+        "button_text": "",
+        "api_url": ""
+      },
+      {
+        "button_text": "",
+        "api_url": ""
+      }
+    ]
+  }
+}
 
 def success():
     return {
@@ -100,18 +179,32 @@ def death():
 
 @app.route('/move/<direction>', methods=["POST"])
 def move(direction):
-    # read post data to check user
-    # userName = request.form.get("username")
-    # get user location with username, using FunGame
 
-    # check if moving direction is valid, using FunGame, you can skip this
+  #example movement
+  if direction == "right":
+    response = jsonify(basement_example)
+  elif direction == "left":
+    response = jsonify(graveyard_example)
+  else:
+    response = jsonify(start_location)
 
-    # load the new location into an object that can be returned as a JSON
 
-    # return locationObject
-    response = jsonify(move_request_example)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response  # this is mock api
+  # read post data to check user
+  # user_name = request.form.get("input_username")
+  # or user_name = request.form["input_username"]
+  # get user location with username, using FunGame and load the location into an object that can be returned as a JSON
+  # old_location = fun_game.getLocationFromUsername(user_name)
+  # check if moving direction is valid, using FunGame, you can skip this
+  # if (direction == "left):
+  #   if (old_location.direction_left): .... this for all directions
+
+  # move user to the new location
+  # location = fun_game.moveUserToNewLocation(user_name, direction)
+
+  # make location into a response JSON
+  #response = jsonify(location)
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  return response  # this is mock api
 
 
 @app.after_request
