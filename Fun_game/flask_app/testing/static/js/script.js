@@ -10,52 +10,6 @@ async function getData(url) {
   return data;
 }
 
-// function to set up game
-// this is the main function that creates the game and calls the other functions
-async function gameSetup(url) {
-  try {
-    document.querySelector('.goal').classList.add('hide');
-    airportMarkers.clearLayers();
-    const gameData = await getData(url);
-    console.log(gameData);
-    updateStatus(gameData.status);
-    if (!checkGameOver(gameData.status.co2.budget)) return;
-    for (let airport of gameData.location) {
-      const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
-      airportMarkers.addLayer(marker);
-      if (airport.active) {
-        map.flyTo([airport.latitude, airport.longitude], 10);
-        showWeather(airport);
-        checkGoals(airport.weather.meets_goals);
-        marker.bindPopup(`You are here: <b>${airport.name}</b>`);
-        marker.openPopup();
-        marker.setIcon(greenIcon);
-      } else {
-        marker.setIcon(blueIcon);
-        const popupContent = document.createElement('div');
-        const h4 = document.createElement('h4');
-        h4.innerHTML = airport.name;
-        popupContent.append(h4);
-        const goButton = document.createElement('button');
-        goButton.classList.add('button');
-        goButton.innerHTML = 'Fly here';
-        popupContent.append(goButton);
-        const p = document.createElement('p');
-        p.innerHTML = `Distance ${airport.distance}km`;
-        popupContent.append(p);
-        marker.bindPopup(popupContent);
-        goButton.addEventListener('click', function() {
-          gameSetup(
-              `${apiUrl}flyto?game=${gameData.status.id}&dest=${airport.ident}&consumption=${airport.co2_consumption}`);
-        });
-      }
-    }
-    updateGoals(gameData.goals);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 function askPlayerName() {
   // prompt user for name
   const playerName = document.querySelector('#player_name').value;
@@ -180,25 +134,26 @@ function renderLocation(location) {
           window.location.href = apiUrl + '/gameover'
         });
 
-  //move handlers to the buttons and/or to the WASD keys, but only to those that we allow from location
-  async function keyMove(event) {
-    if (event.isComposing || event.keyCode === 87) {
-      let moveResponse = await postToApi(apiUrl + 'move/up');
-      renderLocation(moveResponse);
-    } else if (event.isComposing || event.keyCode === 83) {
-      let moveResponse = await postToApi(apiUrl + 'move/down');
-      renderLocation(moveResponse);
-    } else if (event.isComposing || event.keyCode === 65) {
-      let moveResponse = await postToApi(apiUrl + 'move/left');
-      renderLocation(moveResponse);
-    } else if (event.isComposing || event.keyCode === 68) {
-      let moveResponse = await postToApi(apiUrl + 'move/right');
-      renderLocation(moveResponse);
-    }
-  }
+
   document.addEventListener("keydown", keyMove);
 }
-
+//move handlers to the buttons and/or to the WASD keys, but only to those that we allow from location
+async function keyMove(event) {
+  if (event.keyCode === 87) {
+    let moveResponse = await postToApi(apiUrl + 'move/up');
+    renderLocation(moveResponse);
+  } else if (event.keyCode === 83) {
+    let moveResponse = await postToApi(apiUrl + 'move/down');
+    renderLocation(moveResponse);
+  } else if (event.keyCode === 65) {
+    let moveResponse = await postToApi(apiUrl + 'move/left');
+    renderLocation(moveResponse);
+  } else if (event.keyCode === 68) {
+    let moveResponse = await postToApi(apiUrl + 'move/right');
+    renderLocation(moveResponse);
+  }
+  return
+  }
 //start game function
 function startGame() {
   //ask for player name

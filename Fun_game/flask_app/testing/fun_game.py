@@ -38,7 +38,7 @@ class Main:
                 sys.stdout.flush()
                 time.sleep(0)  # change to 0.01 after testing or 0.0 during testing
     # function to get user location
-        def getLocationFromUsername(user_name):
+        def get_location_from_username(username):
             # sql query to get the current_game from username(player name)
 
             # sql query to get location data for the current location of the player
@@ -46,12 +46,23 @@ class Main:
             # return that location
             return location
     # function to move user to new direction
-        def moveUserToNewLocation(user_name, direction):
-            # sql query to get the current_game from username(player name)
+        def move_user_to_new_location(username, direction):
+            # sql query to get the current_game based on username (WHERE player_name = username)
 
-            # sql query to get location data for the current location of the player
+            # get location data for the current location of the player, current_game stores the location_id too
+            # location = get_location_object_from_id(location_id)
 
+            # add username to the location object
             # set user location to the location indicated in location_<direction>
+            # return that location
+            return location
+    # function gets location object from DB data. With this function you no longer need the other hardcoded location
+    # functions, and you all can add new locations easily to the DB
+        def get_location_object_from_id(location_id):
+            # sql query to get location data from location_id
+
+            # add data to the object
+            # location = { <see example for structure and fill fields with data from DB> }
             # return that location
             return location
     # function that clears text
