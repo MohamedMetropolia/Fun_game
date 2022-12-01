@@ -5,37 +5,57 @@
     <title>Fun Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../static/css/style_game.css" rel="stylesheet">
-    <script src="../static/js/script.js"></script>
+    <script src="../static/js/script.js" defer></script>
 </head>
 <body>
-    <section id="gamescreen">
-        <section>
+<div id="loader" class="hide"></div>
+<div id="main">
+    <div id="topleft">
+        <section id="textbox">
+            <p class="gametext">A worn-down hut stands near the entrance to the forest. An old man is sitting on the
+                porch, carving a wooden figure. From the looks of it, he is making a wooden wolf.</p>
+        </section>
+    </div>
+    <div id="topright">
+        <section id="map_box">
             <img src="../static/img/gameplay.jpg" class="map" alt="gameplay">
         </section>
-    </section>
-    <section id="topright">
-        <p id="username">Username: </p> <!-- todo add IDs to the fields so we can add data to them with js -->
-        <p id="current_item"></p>
-        <p id="current_location"></p>
-        <img src="../static/img/compass.png" id="compass" alt="compass">
-    </section>
-    <section id="textbox">
-        <p class="gametext">You found an item. Do you want to keep it?</p>
-        <p class="gametext">>>> Yes</p>
-        <p class="gametext">>>> No</p>
-    </section>
-    <section id="interrupt_buttons">
-        <section>
+    </div>
+    <div id="bottomleft">
+        <section id="encounter" class="hide">
+            <p class="gametext" id="encounter_text">The old man looks at you and says: "I have some gift for you, kid. But you only get
+                it if you answer my riddle correctly:</p>
+            <p class="gametext" id="riddle_question">Had at work day and night, it counts the numbers over and over. Although it counts
+                all its life, it never gets past twelve.</p>
+            <p class="gametext"><input type="text" name="riddle_user_input" id="riddle_user_input"></p>
+            <button class="button" id="submit_riddle_answer">SUBMIT ANSWER</button>
+            <p class="gametext" id="riddle_correct_answer">Correct answer: Clock</p>
+        </section>
+        <section id="item_pickup" class="hide">
+            <p class="gametext" id="item_pickup_text">You answered the riddle correctly! The old man hands you an amulet. Do you take it?</p>
+            <button class="item_button" id="item_yes_button">YES</button>
+            <button class="item_button" id="item_no_button">NO</button>
+        </section>
+    </div>
+    <div id="bottomright">
+        <section id="user_data">
+            <p class="gametext" id="username">Username: NoScope360</p>
+            <p class="gametext" id="current_item">Current item: None</p>
+            <p class="gametext" id="current_location">Current location: Hut</p>
+        </section>
+        <section id="interrupt_buttons">
+            <section>
             <a href="home.html">
-                <button class="button">RESTART</button>
+                <button class="button" id="restart_button">RESTART</button>
             </a>
-        </section>
-        <section>
+            </section>
+            <section>
             <a href="gameover.html">
-                <button class="button">QUIT</button>
+                <button class="button" id="quit_button">QUIT</button>
             </a>
+            </section>
         </section>
-    </section>
-    </element>
+    </div>
+</div>
 </body>
 </html>
