@@ -46,16 +46,6 @@ move_request_example = {
   }
 }
 
-"""@app.route('/number/')
-def print_list():
-    return jsonify(list(range(5)))
-
-@app.route('/person/')
-def hello():
-    return jsonify({"name": "Mido",
-                    "address": "Finland",
-                    "game": "fun_game",
-                    "school": "Metropolia"})"""
 
 
 def success():
@@ -124,39 +114,6 @@ def move(direction):
     return response  # this is mock api
 
 
-"""@app.route('/')
-def run_script():
-    file = open(r'fun_game.py', 'r').read()
-    return exec(file)"""
-"""
-@app.route('/home/')
-def home():
-    return "Home page"
-
-@app.route('/contact')
-def contact():
-    return "Contact page"
-
-@app.route('/teapot/')
-def teapot():
-    return "Would you like some tea?", 418
-
-@app.before_request
-def before():
-    print("This is executed before each request.")
-
-@app.route('/hello/')
-def hello():
-    return "Hello world!"
-
-app.register_blueprint(home_bp, url_prefix='/home')
-app.register_blueprint(contact_bp, url_prefix='/contact')
-
-app.logger.debug('This is a DEBUG message')
-app.logger.info('This is an INFO message')
-app.logger.warning('This is a WARNING message')
-app.logger.error('This is an ERROR message')
-"""
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
