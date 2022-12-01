@@ -896,10 +896,10 @@ class Main:
                     print("You decided on walking down")
                     print("\n")
                     forest()
-        maze()
+        #maze()
 
-m = Main()
-m.start_game()
+#m = Main()
+#m.start_game()
 
 """    
 Template for the new rooms
