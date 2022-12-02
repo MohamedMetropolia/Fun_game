@@ -19,6 +19,8 @@ connection = mysql.connector.connect(
 # The inventory will be linked to mariaDB and called upon by the database driver in the code below.
 # Coded by: Mohamed, Jeferson, Andrea, Immi.
 
+# Line 472 has no return
+
 # The game:
 class Main:
     def start_game(self):
@@ -107,8 +109,8 @@ class Main:
 
     # Function to update the player's current location.
         location = 1
-        def current_location(location): # this and all methods needs username to know which user we are manipulating
-            sql = "UPDATE current_game SET current_location = '{}'".format(location) # add WHERE player_name = user_name
+        def current_location(location):  # this and all methods needs username to know which user we are manipulating
+            sql = "UPDATE current_game SET current_location = '{}'".format(location)  # add WHERE player_name = user_name
             # print(sql)
             cursor = connection.cursor()
             cursor.execute(sql)
