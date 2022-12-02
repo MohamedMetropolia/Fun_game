@@ -2,6 +2,7 @@ import sys
 import time
 import random
 import mysql.connector
+import requests
 import os
 from os import system, name
 
@@ -146,6 +147,20 @@ class Main:
             print(gold)
             score()
         """
+    # Function to add riddles
+        def riddle():
+            print("I have a riddle for you!")
+            riddle = "https://riddles-api.vercel.app/random"
+            response = requests.get(riddle).json()
+            print(response.get('riddle'))
+            answer = input("What is your answer? ")
+            correct = response.get('answer')
+            print(response.get('answer'))
+            if answer == correct:
+                print(f"Good job! The answer was {answer}!")
+            else:
+                print(f"{answer}? Uh oh, that isn't quite right.")
+                print(f"The answer was {correct}. Better luck next time!")
 
     # The introduction of the game
         print_slow("Welcome to our text based adventure game! (now officially supporting mariadb)")
