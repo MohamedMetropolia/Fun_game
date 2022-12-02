@@ -37,7 +37,34 @@ class Main:
                 sys.stdout.write(text)
                 sys.stdout.flush()
                 time.sleep(0)  # change to 0.01 after testing or 0.0 during testing
+    # function to get user location
+        def get_location_from_username(username):
+            # sql query to get the current_game from username(player name)
 
+            # sql query to get location data for the current location of the player
+
+            # return that location
+            return location
+    # function to move user to new direction
+        def move_user_to_new_location(username, direction):
+            # sql query to get the current_game based on username (WHERE player_name = username)
+
+            # get location data for the current location of the player, current_game stores the location_id too
+            # location = get_location_object_from_id(location_id)
+
+            # add username to the location object
+            # set user location to the location indicated in location_<direction>
+            # return that location
+            return location
+    # function gets location object from DB data. With this function you no longer need the other hardcoded location
+    # functions, and you all can add new locations easily to the DB
+        def get_location_object_from_id(location_id):
+            # sql query to get location data from location_id
+
+            # add data to the object
+            # location = { <see example for structure and fill fields with data from DB> }
+            # return that location
+            return location
     # function that clears text
         def clear():
             print("\n" * 100)
@@ -79,8 +106,8 @@ class Main:
 
     # Function to update the player's current location.
         location = 1
-        def current_location(location):
-            sql = "UPDATE current_game SET current_location = '{}'".format(location)
+        def current_location(location): # this and all methods needs username to know which user we are manipulating
+            sql = "UPDATE current_game SET current_location = '{}'".format(location) # add WHERE player_name = user_name
             # print(sql)
             cursor = connection.cursor()
             cursor.execute(sql)
@@ -187,10 +214,9 @@ class Main:
             current_location(location)
             whereami()
             directions = ["left", "right", "up"]
-            print_slow("You find yourself walking downstairs to the basement!") # Needs elaboration
+            print_slow("You are walking downstairs to a cold and damp place with little to no light. It seems to be an old basement.") # Needs elaboration
             # Condition to check wether the user already has this item
-            print_slow("Under a dusty blanket seems to be a Sword")
-            print_slow("It might come in handy later on...")
+            print_slow("Under a dusty blanket there seems to be a Sword. It might come in handy later on... Would you take it?")
             print("""
                      /\´
                     /  |
@@ -260,7 +286,7 @@ class Main:
             current_location(location)
             whereami()
             directions = ["up", "right", "left"]
-            print_slow("This path leads you outside to a graveyard")
+            print_slow("In the distance you see slim sharp silhouettes in the fog. As you walk closer, you can see those are tombstones and you are in the middle of a graveyard.")
             direction = input("--> Which direction would you like to go? ").lower()
             while direction not in directions:
                 print("Sorry, here you can only go up, left or right")
@@ -881,10 +907,10 @@ class Main:
                     print("You decided on walking down")
                     print("\n")
                     forest()
-        maze()
+        #maze()
 
-m = Main()
-m.start_game()
+#m = Main()
+#m.start_game()
 
 """    
 Template for the new rooms
