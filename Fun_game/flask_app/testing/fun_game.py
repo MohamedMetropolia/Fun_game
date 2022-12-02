@@ -147,7 +147,7 @@ class Main:
             print(gold)
             score()
         """
-        # Function to add riddles
+    # Function to add riddles
         def riddle():
             print("I have a riddle for you!")
             riddle = "https://riddles-api.vercel.app/random"
