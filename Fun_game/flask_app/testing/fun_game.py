@@ -42,6 +42,7 @@ class Main:
                 time.sleep(0)  # change to 0.01 after testing or 0.0 during testing
     # function to get user location
         def get_location_from_username(username):
+
             # sql query to get the current_game from username(player name)
 
             # sql query to get location data for the current location of the player
