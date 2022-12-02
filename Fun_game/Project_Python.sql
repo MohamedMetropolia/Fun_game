@@ -101,6 +101,6 @@ values ("Maze","You find yourself waking up in a maze. You have to find the exit
        ("Wolf","You hear pained whining coming from underneath a fallen tree a wolf has been trapped underneath! It's trying to free itself, but seems to be making no progress.","",0,"","","","","","","",0,0,"","","",0,0,0,0);
 
 insert into current_game(player, current_location, inventory, score)
-values ("Starting player", 1, 1, 0)
+values ("", 1, 1, 0)
 
 

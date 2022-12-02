@@ -41,14 +41,30 @@ class Main:
                 sys.stdout.flush()
                 time.sleep(0)  # change to 0.01 after testing or 0.0 during testing
     # function to get user location
+
         def get_location_from_username(username):
-
+            sql = "SELECT current_location FROM current_game WHERE player = '" + username + "' "
+            # print(sql)
+            cursor = connection.cursor()
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            if cursor.rowcount > 0:
+                for row in result:
+                    return row[0]
+            return ""
             # sql query to get the current_game from username(player name)
-
             # sql query to get location data for the current location of the player
-
             # return that location
-            return location
+
+        @app.route
+        def location(username):
+            loct = get_location_from_username(username)
+            response = {
+                "Player_name": username,
+                "Location": loct,
+            }
+            print(response)
+            return response
     # function to move user to new direction
         def move_user_to_new_location(username, direction):
             # sql query to get the current_game based on username (WHERE player_name = username)
@@ -99,6 +115,7 @@ class Main:
 
     # Function that lets the user know where they are.
         def whereami():
+            
             sql = "SELECT description FROM location WHERE id in ( SELECT current_location FROM current_game WHERE id = 1 )"
             # print(sql)
             cursor = connection.cursor()
@@ -110,6 +127,7 @@ class Main:
 
     # Function to update the player's current location.
         location = 1
+
         def current_location(location):  # this and all methods needs username to know which user we are manipulating
             sql = "UPDATE current_game SET current_location = '{}'".format(location)  # add WHERE player_name = user_name
             # print(sql)
@@ -119,6 +137,7 @@ class Main:
 
     # Function to update the player's inventory.
         item = 1
+
         def inventory(item):
             sql = "UPDATE current_game SET inventory = '{}'".format(item)
             # print(sql)
