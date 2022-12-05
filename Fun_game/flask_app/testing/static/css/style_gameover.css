@@ -20,6 +20,7 @@ body {
 h1 {
     font-weight: normal;
     font-size: 10rem;
+    margin: 5%;
 }
 
 #stats {
@@ -42,6 +43,7 @@ button {
     width: 30%;
     color: #1e284f;
     background: #c5dde6;
+    margin-bottom: 1%;
 }
 
 button:active {

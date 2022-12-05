@@ -39,6 +39,10 @@ async function postToApi(postToApiUrl) {
 function initGame(playerName) {
   // call api to create user
   let postToApiUrl = apiUrl + 'create_player/' + playerName; //todo: create api in flask
+  //const form = document.querySelector('form');
+  //const input = document.querySelector('input');
+  //form.addEventListener('submit', async function(evt)
+  //evt.preventDefault();
   return postToApi(postToApiUrl);
 }
 

@@ -39,12 +39,10 @@ body {
 #user_data {
     font-size: 30px;
     color: white;
-    float: right;
     padding: 20px;
-    margin-left: 20px;
+    margin-left: -13.8%;
     text-align: left;
-    border: 6px white;
-    border-style: solid;
+    border: 6px solid white;
 }
 
 #item_pickup {
@@ -52,11 +50,12 @@ body {
     color: white;
     display: flex;
     flex-wrap: wrap;
-    border: 6px white;
-    border-style: solid;
+    border: 6px solid white;
     margin-left: 30px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-right: 100px;
+    margin-bottom: 30px;
 }
 
 .item_button {
@@ -72,12 +71,10 @@ body {
     font-size: 30px;
     color: white;
     flex-wrap: wrap;
-    border: 6px white;
-    border-style: solid;
+    border: 6px solid white;
     display: block;
     padding: 20px;
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin: -19.4% 100px 4% 30px;
 }
 
 #riddle_user_input {
@@ -115,34 +112,31 @@ body {
     float: right;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 90%;
-    border: 6px white;
-    border-style: solid;
+    width: 112%;
+    border: 6px solid white;
 }
 
 #textbox {
     font-size: 2rem;
     color: white;
-    display: flex;
-    flex-wrap: wrap;
-    border: 6px white;
-    border-style: solid;
+    display: flex;;
+    border: 6px solid white;
     padding: 20px;
     margin-top: 30px;
     margin-left: 30px;
+    margin-right: 100px;
 }
 
 .gametext {
     margin-block-start: 0;
     margin-block-end: 0;
     margin: 10px;
-
 }
 
 #interrupt_buttons {
     bottom: 20px;
     right: 50px;
-    position: absolute;
+    position: static;
     display: inline;
     margin-right: 40px;
 }
