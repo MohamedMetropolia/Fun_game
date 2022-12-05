@@ -303,7 +303,7 @@ class Main:
             current_location(location)
             whereami()
             directions = ["up", "right", "left"]
-            print_slow("In the distance you see slim sharp silhouettes in the fog. As you walk closer, you can see those are tombstones and you are in the middle of a graveyard.")
+            print_slow("In the distance you see some slim silhouettes in the fog. As you walk closer, you realize that those are tombstones and you find yourself in the middle of a graveyard.")
             direction = input("--> Which direction would you like to go? ").lower()
             while direction not in directions:
                 print("Sorry, here you can only go up, left or right")
@@ -545,7 +545,7 @@ class Main:
             current_location(location)
             whereami()
             directions = ["left", "right", "up", "down"]
-            print_slow("You hear a splashing and see  a pond up ahead, a mermaid greets you from the water")
+            print_slow("You hear a splashing and see a pond up ahead, a mermaid greets you from the water")
             direction = input("--> Which direction would you like to go? ").lower()
             while direction not in directions:
                 print_slow("sorry, here your options are left, right, up or down")
@@ -771,11 +771,7 @@ class Main:
             current_location(location)
             whereami()
             directions = ["left", "right", "down"]
-            print_slow("The stones under your feet turn lighter and lighter, "
-                       "until you realise they're not stones at all. "
-                       "The field ahead of you shines an ivory white, "
-                       "full of bones of various sizes and sources. "
-                       "What brought them here? You'd rather not think about it too much.")
+            print_slow("The stones under your feet turn lighter and lighter, until you realise they're not stones at all. The field ahead of you shines an ivory white, full of bones of various sizes and sources. What brought them here? You'd rather not think about it too much.")
             direction = input("--> Which direction would you like to go? ").lower()
             while direction not in directions:
                 print_slow("sorry, here your options are left, right, or down")
@@ -799,8 +795,7 @@ class Main:
             current_location(location)
             whereami()
             directions = ["left", "down"]
-            print_slow("You hear pained whining coming from underneath a fallen tree - "
-                       "a wolf has been trapped underneath! It's trying to free itself, but seems to be making no progress.")
+            print_slow("You hear pained whining coming from underneath a fallen tree a wolf has been trapped underneath! It's trying to free itself, but seems to be making no progress.")
             direction = input("--> Which direction would you like to go? ").lower()
             while direction not in directions:
                 print_slow("sorry, here your options are left or down")

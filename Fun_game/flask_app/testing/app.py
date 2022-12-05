@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, Blueprint, render_template, redirect,
 import json
 import os
 from flask_cors import CORS, cross_origin
-import fun_game
+
 
 app = Flask(__name__)
 cors = CORS(app)
