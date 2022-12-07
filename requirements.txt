@@ -1,0 +1,6 @@
+requests
+mysql-connector-python~=8.0.28
+Flask
+python-dotenv
+geopy
+Flask-CORS~=3.0.10
