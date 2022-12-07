@@ -18,7 +18,8 @@
     </div>
     <div id="topright">
         <section id="map_box">
-            <img src="../static/img/gameplay.jpg" class="map" alt="gameplay">
+            <div class="map"></div>
+            <!--<img src="../static/img/maps/maze_map.png" class="map" alt="gameplay">-->
         </section>
     </div>
     <div id="bottomleft">
@@ -41,7 +42,7 @@
     </div>
     <div id="bottomright">
         <section id="user_data">
-            <input type="hidden" name="input_username" id="input_username">
+            <input type="hidden" name="input_username" id="input_username" value="{{input_username}}">
             <p class="gametext" id="username">Username: None</p>
             <p class="gametext" id="current_item">Current item: None</p>
             <p class="gametext" id="current_location">Current location: Hut</p>

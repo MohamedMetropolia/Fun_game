@@ -23,16 +23,7 @@
     "description": "Sword"
   },
   "item_decision": {
-    "item_decision_text": "Under a dusty blanket seems to be a Sword\nIt might come in handy later on...\n-->, would you take it?",
-    "options": [
-      {
-        "button_text": "yes",
-        "api_url": "/take/sword"
-      },
-      {
-        "button_text": "no",
-        "api_url": 0
-      }
-    ]
+    "item_id": 0,
+    "item_decision_text": "Under a dusty blanket seems to be a Sword\nIt might come in handy later on...\n-->, would you take it?"
   }
 }
