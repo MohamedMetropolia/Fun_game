@@ -217,7 +217,7 @@ class Main:
             print_slow(f"Welp, there you have it and best of luck {name}!")
             print("\n")
         intro()
-
+"""
     # Here will be the functional part where the user can play the game.
         print_slow("You find yourself waking up in a maze. You have to find the exit in order to survive.")
         def maze():
@@ -254,7 +254,7 @@ class Main:
             print_slow("You are walking downstairs to a cold and damp place with little to no light. It seems to be an old basement.") # Needs elaboration
             # Condition to check wether the user already has this item
             print_slow("Under a dusty blanket there seems to be a Sword. It might come in handy later on... Would you take it?")
-            print("""
+            print(""
                      /\´
                     /  |
       *            /  /________________________________________________
@@ -264,7 +264,7 @@ class Main:
       *            \   |
                     \  |
                      \/
-            """)
+            "")
             decision = input("-->, would you take it? y/n: ").lower()
             if decision == "y":
                 item = 4
@@ -385,15 +385,15 @@ class Main:
                 if direction == "left":
                     # Include questions or encounter before death
                     print_slow("As you tried moving to the left a horde of undead dogs attacked you...END")
-                    print("""
+                    print(""
                                  __
                         \ ______/ V`-,
                         }        /~~
                         /_)^ --,r'
                        |b      |b
-                    """)
+                    "")
                     time.sleep(1)
-                    print("""
+                    print("
                                         .-^^^^^^-.
         `;-,                           /     @) @)\´
           \-\                         |            `-.
@@ -412,15 +412,15 @@ class Main:
              \)\)\)' ' '           \)\)\)'
               ' ' '                 ' ' '
     
-                    """)
+                    "")
                     time.sleep(1)
-                    print(""" 
+                    print(""
                         .--~~,__
             :-....,-------`~~'._.'
             `-,,,  ,_      ;'~U'
             _,-' ,'`-__; '--.
-            (_/'~~      ''''(;
-                    """)
+            (_/'~~      ''(;
+                    "")
                     time.sleep(2)
                     death()
                 elif direction == "up":
@@ -446,7 +446,7 @@ class Main:
                 if direction == "up":
                     print_slow("You've found a Demogorgon in the room")
                     print_slow("if you happen to have a weapon you might find a way out")
-                    print("""                            ,-.                               
+                    print(""                            ,-.
            ___,---.__          /'|`\          __,---,___          
         ,-'    \`    `-.____,-'  |  `-.____,-'    //    `-.       
       ,'        |           ~'\     /`~           |        `.      
@@ -462,7 +462,7 @@ class Main:
                 /   /     ||--+--|--+-/-|     \   \                 
                |   |     /'\_\_\ | /_/_/`\     |   |                
                 \   \__, \_     `~'     _/ .__/   /            
-                 `-._,-'   `-._______,-'   `-._,-'""")
+                 `-._,-'   `-._______,-'   `-._,-'"")
                     if check_inventory() == "Sword":
                         user_decision = input(f"would you like to use the {check_inventory()}? y/n ").lower()
                         if user_decision == "y":
@@ -508,7 +508,7 @@ class Main:
                     print("\n")
                     # New Room
 
-        def treasure_room():    # new added function
+                def treasure_room():    # new added function
             location = 8    # treasure_room
             current_location(location)
             whereami()
@@ -842,7 +842,7 @@ class Main:
             if direction in directions:
                 if direction == "right":
                     print_slow("A flying skull hit you on the head...END")
-                    print("""                                                  _________-----_____
+                    print(""                                                  _________-----_____
                                                                     _____------           __      ----_
                                                              ___----             ___------              \`
                                                                 ----________        ----                 \`
@@ -857,9 +857,9 @@ class Main:
                                                                                              |  | ((_(_)| )_)
                                                                                              |  \_((_(_)|/(_)
                                                                                              \             (
-                                                                                             \_____________)""")
+                                                                                             \_____________)"")
                     time.sleep(1)
-                    print("""                                  _________-----_____
+                    print(""                                  _________-----_____
                                                     _____------           __      ----_
                                              ___----             ___------              \`
                                                 ----________        ----                 \`
@@ -874,9 +874,9 @@ class Main:
                                                                              |  | ((_(_)| )_)
                                                                              |  \_((_(_)|/(_)
                                                                              \             (
-                                                                             \_____________)""")
+                                                                             \_____________)"")
                     time.sleep(1)
-                    print("""                  _________-----_____
+                    print(""                  _________-----_____
                                     _____------           __      ----_
                              ___----             ___------              \`
                                 ----________        ----                 \`
@@ -891,7 +891,7 @@ class Main:
                                                              |  | ((_(_)| )_)
                                                              |  \_((_(_)|/(_)
                                                              \             (
-                                                             \_____________)""")
+                                                             \_____________)"")
                     time.sleep(2)
                     death()
                     # Adding the option  if the player wants to play again
@@ -944,7 +944,7 @@ class Main:
 #m = Main()
 #m.start_game()
 
-"""    
+
 Template for the new rooms
 def NewRoom():
         location = 3  
