@@ -912,14 +912,14 @@ class Main:
             directions = ["up", "down"]
             print_slow("You find yourself walking in a shed full of feathers!")
             # Condition to check wether the user already has this item
-            print("""
+            print(""
             
         (`/\´      (`/\´            (`/\´      (`/\´
         `=\/\´     `=\/\´           `=\/\´     `=\/\´
          `=\/\´     `=\/\´           `=\/\´     `=\/\´
           `=\/       `=\/             `=\/       `=\/
              \´         \´               \´         \´
-            """)
+            ")
             decision = input("-->, would you like to take one? y/n: ").lower()
             if decision == "y":
                 item = 2
