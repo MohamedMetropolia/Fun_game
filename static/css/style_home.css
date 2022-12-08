@@ -24,7 +24,7 @@ h1 {
 input[type=text] {
     font-family: VT323;
     font-size: 2rem;
-    width: 20%;
+    width: 19%;
     padding: 12px 20px;
     margin: 50px;
     margin-right: 0;
@@ -33,11 +33,11 @@ input[type=text] {
 }
 
 input[type=submit] {
-    width: 9.9%;
-    margin: 0;
+    width: 11%;
+    margin-right: 0;
     font-family: VT323;
     font-size: 2rem;
-    padding: 12px 20px;
+    padding: 12px;
     color: white;
     background-color: #6784a6;
 }
