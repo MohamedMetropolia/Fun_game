@@ -87,7 +87,6 @@ start_location = {
 }
 
 
-
 graveyard_example = {
   "status": 200,
   "player_name": "John",

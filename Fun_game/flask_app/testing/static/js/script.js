@@ -89,6 +89,8 @@ function renderLocation(location) {
   document.querySelector('#current_location').innerHTML = `Current location: ${location.location_name}`;
   //add location text to the html
   document.querySelector('#textbox').innerHTML = location.location_text;
+  document.querySelector('#item_pick').style.visibility = "hidden";
+
 
   //if there is item pick up, unhide item pick up section
   if (location.item.id) {
@@ -98,6 +100,7 @@ function renderLocation(location) {
           getData(location.item_decision.options[0].api_url);
           //registering new item in database
           document.querySelector('#item_pickup').classList.add('hide');
+
         });
     document.querySelector('#item_no_button').
         addEventListener('click', function(evt) {
