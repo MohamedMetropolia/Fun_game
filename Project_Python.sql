@@ -1,4 +1,4 @@
-#WRITTEN BY: Mohamed, Jeferson, Andrea, MD Shamiul
+#WRITTEN BY: Mohamed, Jeferson, Andrea, Immi
 
 # Creating the database
 DROP DATABASE IF EXISTS fun_game;
