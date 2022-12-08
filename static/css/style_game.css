@@ -139,9 +139,9 @@ body {
 #interrupt_buttons {
     bottom: 20px;
     right: 50px;
-    position: static;
+
     display: inline;
-    margin-right: 40px;
+    margin-right: -2%;
 }
 #map_box {
 
