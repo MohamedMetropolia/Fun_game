@@ -6,8 +6,7 @@ const apiUrl = 'http://127.0.0.1:5000/';
 async function getData(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Invalid server input!');
-    const data = await response.json();
-    return data;
+    return await response.json();
 }
 
 
@@ -21,8 +20,7 @@ async function postToApi(postToApiUrl) {
     };
     try {
         const fetchResponse = await fetch(`${postToApiUrl}`, settings);
-        const data = await fetchResponse.json();
-        return data;
+        return await fetchResponse.json();
     } catch (e) {
         return e;
     }
@@ -84,7 +82,7 @@ function renderLocation(location) {
     // if there is an inventory.description then we have an item, display item desc and image
     if (location.item) {
         document.querySelector(
-            '#current_item').innerHTML = `Current item: ${location.item.description}`;
+            '#current_item').innerHTML = `Current item: ${location.item_description}`;
     }
     //document.querySelector('#current_item').innerHTML = `Current item: ${location.item.description}`;
     document.querySelector(

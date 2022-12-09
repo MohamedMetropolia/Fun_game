@@ -74,7 +74,7 @@ body {
     border: 6px solid white;
     display: block;
     padding: 20px;
-    margin: -19.4% 100px 4% 30px;
+    margin: -30% 100px 4% 30px;
 }
 
 #riddle_user_input {
@@ -112,10 +112,9 @@ body {
     float: right;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 112%;
+    width: 113.83%;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 6px solid white;
     min-height: 400px;
 }
 
@@ -143,9 +142,7 @@ body {
     display: inline;
     margin-right: -2%;
 }
-#map_box {
 
-}
 #restart_button {
     font-size: 3rem;
     font-family: VT323;
