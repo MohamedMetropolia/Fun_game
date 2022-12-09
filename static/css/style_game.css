@@ -112,11 +112,11 @@ body {
     float: right;
     margin-bottom: 30px;
     margin-top: 30px;
-    width: 112%;
+    width: 113.83%;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 6px solid white;
     min-height: 400px;
+
 }
 
 #textbox {
@@ -143,9 +143,7 @@ body {
     display: inline;
     margin-right: -2%;
 }
-#map_box {
 
-}
 #restart_button {
     font-size: 3rem;
     font-family: VT323;
