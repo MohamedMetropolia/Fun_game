@@ -104,7 +104,7 @@ function renderLocation(location) {
     // if there is an inventory.description then we have an item, display item desc and image
     if (location.item) {
         document.querySelector(
-            '#current_item').innerHTML = `Current item: ${location.item.description}`;
+            '#current_item').innerHTML = `Current item: ${location.item_description}`;
     }
     //document.querySelector('#current_item').innerHTML = `Current item: ${location.item.description}`;
     document.querySelector(
