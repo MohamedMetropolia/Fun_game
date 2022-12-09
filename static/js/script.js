@@ -6,8 +6,7 @@ const apiUrl = 'http://127.0.0.1:5000/';
 async function getData(url) {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Invalid server input!');
-    const data = await response.json();
-    return data;
+    return await response.json();
 }
 
 function askPlayerName() {
@@ -29,8 +28,7 @@ async function postToApi(postToApiUrl) {
     };
     try {
         const fetchResponse = await fetch(`${postToApiUrl}`, settings);
-        const data = await fetchResponse.json();
-        return data;
+        return await fetchResponse.json();
     } catch (e) {
         return e;
     }
