@@ -47,7 +47,7 @@ create table location
 create table current_game
 (
      id               int(11) NOT NULL AUTO_INCREMENT,
-     player           varchar(40) DEFAULT NULL,
+     player           varchar(40) UNIQUE DEFAULT NULL,
      current_location int(40)     DEFAULT NULL,
      inventory        int(40) DEFAULT NULL,
      score            int(40) DEFAULT null,
