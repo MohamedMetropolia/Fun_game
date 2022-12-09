@@ -12,122 +12,6 @@ backend = fun_game.Main()
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-# mock data for JS testing
-basement_example = {
-    "status": 200,
-    "player_name": "John",
-    "directions": ["left", "right", "up"],
-    "location_id": 2,
-    "location_name": "Basement",
-    "location_text": "You are walking downstairs to a cold and damp place with little to no light. It seems to be an old basement.",
-    "map_image": "basement_map.png",
-    "encounter": {
-        "encounter_text": "",
-        "encounter_image": "",
-        "riddle_question": "",
-        "riddle_answer": "",
-        "use_item_decision": "",
-        "encounter_win_url": "",
-        "encounter_win_text": "",
-        "encounter_loose_url": "",
-        "encounter_loose_text": ""
-    },
-    "item": {
-        "id": 1,
-        "image": "../img/sword.png",
-        "description": "Sword"
-    },
-    "item_decision": {
-        "item_decision_text": "Under a dusty blanket there seems to be a Sword. It might come in handy later on... Would you take it?",
-        "options": [
-            {
-                "button_text": "yes",
-                "api_url": "take/sword"
-            },
-            {
-                "button_text": "no",
-                "api_url": 0
-            }
-        ]
-    }
-}
-start_location = {
-    "status": 200,
-    "player_name": "John",
-    "directions": ["left", "right", "up"],
-    "location_id": 1,
-    "location_name": "Maze",
-    "location_text": "You find yourself waking up in a maze. You have to find the exit in order to survive.",
-    "map_image": "maze_map.png",
-    "encounter": {
-        "encounter_text": "",
-        "encounter_image": "",
-        "riddle_question": "",
-        "riddle_answer": "",
-        "use_item_decision": "",
-        "encounter_win_url": "",
-        "encounter_win_text": "",
-        "encounter_loose_url": "",
-        "encounter_loose_text": ""
-    },
-    "item": {
-        "id": 0,
-        "image": "",
-        "description": ""
-    },
-    "item_decision": {
-        "item_decision_text": "",
-        "options": [
-            {
-                "button_text": "",
-                "api_url": ""
-            },
-            {
-                "button_text": "",
-                "api_url": ""
-            }
-        ]
-    }
-}
-graveyard_example = {
-    "status": 200,
-    "player_name": "John",
-    "directions": ["left", "right"],
-    "location_id": 4,
-    "location_name": "Graveyard",
-    "location_text": "In the distance you see slim sharp silhouettes in the fog. As you walk closer, you can see those are tombstones and you are in the middle of a graveyard.",
-    "map_image": "graveyard_map.png",
-    "encounter": {
-        "encounter_text": "",
-        "encounter_image": "",
-        "riddle_question": "",
-        "riddle_answer": "",
-        "use_item_decision": "",
-        "encounter_win_url": "",
-        "encounter_win_text": "",
-        "encounter_loose_url": "",
-        "encounter_loose_text": ""
-    },
-    "item": {
-        "id": 0,
-        "image": "",
-        "description": ""
-    },
-    "item_decision": {
-        "item_decision_text": "",
-        "options": [
-            {
-                "button_text": "",
-                "api_url": ""
-            },
-            {
-                "button_text": "",
-                "api_url": ""
-            }
-        ]
-    }
-}
-
 
 # helper functions that we need in flask
 def success():
@@ -142,7 +26,6 @@ def fail():
 
 def get_player_name_from_request():
     user_name = request.form.get("input_username")
-    logging.info(request.form)
     if not user_name:
         user_name = request.cookies.get("input_username")
     return user_name
@@ -176,8 +59,7 @@ def home():
 @app.route('/create_player', methods=["POST"])
 def create_player():
     player_name = get_player_name_from_request()
-    player_id = backend.new_player(player_name)
-    #response = jsonify(player_data)
+    backend.new_player(player_name)
     response = app.make_response(render_template('game.html', input_username=player_name))
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.set_cookie('input_username', player_name)

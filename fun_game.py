@@ -133,12 +133,17 @@ class Main:
         return riddle
 
     def new_player(self, player_name):
-        sql = "INSERT INTO current_game (player, current_location) VALUE (%(player_name)s,1)"
+        # this is a check if the player exists
+        sql = "SELECT player FROM current_game WHERE player=%(player_name)s"
         cursor = connection.cursor(dictionary=True, buffered=True)
         cursor.execute(sql, {"player_name": player_name})
-        user_id = cursor.lastrowid
-        self.add_visited_location(user_id, 1)
-        return cursor.lastrowid
+        if cursor.rowcount == 0:
+            sql = "INSERT INTO current_game (player, current_location) VALUE (%(player_name)s,1)"
+            cursor = connection.cursor(dictionary=True, buffered=True)
+            cursor.execute(sql, {"player_name": player_name})
+            user_id = cursor.lastrowid
+            self.add_visited_location(user_id, 1)
+        return
 
     def loot_item(self, player_name, item):
         sql = "UPDATE current_game SET inventory=%(item)s WHERE player=%(name)s"
@@ -206,9 +211,14 @@ class Main:
 
     def add_visited_location(self, user_id, location_id):
         try:
-            sql = "INSERT INTO visited_locations (current_game_id, location_id) VALUE (%(user_id)s,%(location_id)s)"
+            # this is a check if the player visited the location
+            sql = "SELECT * FROM visited_locations WHERE current_game_id=%(current_game_id)s AND location_id=%(location_id)s"
             cursor = connection.cursor(dictionary=True, buffered=True)
-            cursor.execute(sql, {"user_id": user_id, "location_id": location_id})
+            cursor.execute(sql, {"current_game_id": user_id, "location_id": location_id})
+            if cursor.rowcount == 0:
+                sql = "INSERT INTO visited_locations (current_game_id, location_id) VALUE (%(user_id)s,%(location_id)s)"
+                cursor = connection.cursor(dictionary=True, buffered=True)
+                cursor.execute(sql, {"user_id": user_id, "location_id": location_id})
         except mysql.connector.errors.IntegrityError as e:
-            pass  # todo: this is a hack, solve this by checking if the record exists
+            raise
 
