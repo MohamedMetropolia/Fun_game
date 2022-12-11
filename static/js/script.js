@@ -98,7 +98,8 @@ function renderLocation(location) {
             '#item_pickup_text').innerHTML = location.item_decision.item_decision_text;
         document.querySelector('#item_yes_button').
             addEventListener('click', function(evt) {
-                getData('loot_item/' + location.item_decision.item_id);
+                let item = getData('loot_item/' + location.item_decision.item_id);
+                document.querySelector('#current_item').innerHTML = `Current item: ${item}`
                 //registering new item in database
                 document.querySelector('#item_pickup').classList.add('hide');
             });
@@ -157,22 +158,22 @@ function renderLocation(location) {
 
 //move handlers to the buttons and/or to the WASD keys, but only to those that we allow from location
 async function keyMove(event) {
-    if (event.keyCode === 87) {
+    if (event.keyCode === 38) {
         let moveResponse = await postToApi(apiUrl + 'move/up');
         document.querySelector('#loader').classList.remove('hide');
         renderLocation(moveResponse);
         document.querySelector('#loader').classList.add('hide');
-    } else if (event.keyCode === 83) {
+    } else if (event.keyCode === 40) {
         let moveResponse = await postToApi(apiUrl + 'move/down');
         document.querySelector('#loader').classList.remove('hide');
         renderLocation(moveResponse);
         document.querySelector('#loader').classList.add('hide');
-    } else if (event.keyCode === 65) {
+    } else if (event.keyCode === 37) {
         let moveResponse = await postToApi(apiUrl + 'move/left');
         document.querySelector('#loader').classList.remove('hide');
         renderLocation(moveResponse);
         document.querySelector('#loader').classList.add('hide');
-    } else if (event.keyCode === 68) {
+    } else if (event.keyCode === 39) {
         let moveResponse = await postToApi(apiUrl + 'move/right');
         document.querySelector('#loader').classList.remove('hide');
         renderLocation(moveResponse);
