@@ -9,14 +9,6 @@ async function getData(url) {
     return await response.json();
 }
 
-function askPlayerName() {
-    // prompt user for name
-    const playerName = document.querySelector('#player_name').value;
-    // set the required variables, if needed
-
-    //return name
-    return playerName;
-}
 
 async function postToApi(postToApiUrl) {
     const settings = {
@@ -32,20 +24,6 @@ async function postToApi(postToApiUrl) {
     } catch (e) {
         return e;
     }
-}
-
-function initGame(playerName) {
-    // call api to create user
-    //let postToApiUrl = apiUrl + 'create_player/' + playerName; //todo: create api in flask
-    //const form = document.querySelector('form');
-    //const input = document.querySelector('input');
-    //form.addEventListener('submit', async function(evt)
-    //evt.preventDefault();
-    return postToApi(postToApiUrl);
-}
-
-function fetchLocation(number) {
-    return getData(apiUrl + 'location/' + number);
 }
 
 //player movement to new area
@@ -181,7 +159,7 @@ function renderLocation(location) {
 async function keyMove(event) {
     if (event.keyCode === 87) {
         let moveResponse = await postToApi(apiUrl + 'move/up');
-        document.querySelector('#loader').classList.remove('hide'); // todo fix loading screen if you want to
+        document.querySelector('#loader').classList.remove('hide');
         renderLocation(moveResponse);
         document.querySelector('#loader').classList.add('hide');
     } else if (event.keyCode === 83) {
@@ -203,25 +181,6 @@ async function keyMove(event) {
     return;
 }
 
-//start game function
-function startGame() {
-    //ask for player name
-    let playerName = askPlayerName();
-    // init game in python with the player name
-    let initGameResponse = initGame(playerName);
-    //check if init game was successful
-    //if (!initGameResponse.ok)....
-    //start loading image
-
-    document.querySelector('#loader').classList.add('hide');
-    //get first area data
-    let startLoc = fetchLocation(1); //fetch first location
-    //hide loading image
-
-    //parse location data and add it to html
-    renderLocation(firstLocation);
-
-}
 
 //mock render for testing
 async function mock() {
