@@ -30,7 +30,7 @@ async function postToApi(postToApiUrl) {
 async function moveHandlerUp(evt) {
     evt.preventDefault();
     const moveResponse = await postToApi(apiUrl + 'move/up');
-    if (moveResponse.status == 500) {
+    if (moveResponse.status === 500) {
         renderLocation(moveResponse);
     }
 }
@@ -38,7 +38,7 @@ async function moveHandlerUp(evt) {
 async function moveHandlerDown(evt) {
     evt.preventDefault();
     let moveResponse = await postToApi(apiUrl + 'move/down');
-    if (moveResponse.status == 500) {
+    if (moveResponse.status === 500) {
         renderLocation(moveResponse);
     }
 }
@@ -46,7 +46,7 @@ async function moveHandlerDown(evt) {
 async function moveHandlerRight(evt) {
     evt.preventDefault();
     let moveResponse = await postToApi(apiUrl + 'move/right');
-    if (moveResponse.status == 500) {
+    if (moveResponse.status === 500) {
         renderLocation(moveResponse);
     }
 }
@@ -54,7 +54,7 @@ async function moveHandlerRight(evt) {
 async function moveHandlerLeft(evt) {
     evt.preventDefault();
     let moveResponse = await postToApi(apiUrl + 'move/left');
-    if (moveResponse.status == 500) {
+    if (moveResponse.status === 500) {
         renderLocation(moveResponse);
     }
 }
@@ -65,6 +65,8 @@ function renderLocation(location) {
     if (location.status ===500) {
         return
     }
+    document.querySelector('#item_pickup').setAttribute('style', 'display:none');
+    document.querySelector('#encounter').setAttribute('style', 'display:none');
     if (location.map_image !== undefined) {
         let url = ""
         for (let piece of location.map_image) {
@@ -82,26 +84,31 @@ function renderLocation(location) {
     // if there is an inventory.description then we have an item, display item desc and image
     if (location.item) {
         document.querySelector(
-            '#current_item').innerHTML = `Current item: ${location.item_description}`;
+            '#current_item').innerHTML = `Current item: ${location.item.description}`;
     }
     //document.querySelector('#current_item').innerHTML = `Current item: ${location.item.description}`;
     document.querySelector(
         '#current_location').innerHTML = `Current location: ${location.location_name}`;
     //add location text to the html
-    document.querySelector('#textbox').innerHTML = location.location_text;
+    let location_text = location.location_text;
+    location_text += "<br>You can go in the following directions:";
+    for (let direction of location.directions) {
+        location_text += " " + direction + ","
+    }
+    document.querySelector('#textbox').innerHTML = location_text;
 
     //if there is item pick up, unhide item pick up section
 
     if (location.item_decision.item_id) {
-        document.querySelector('#item_pickup').classList.remove('hide');
+        document.querySelector('#item_pickup').setAttribute('style', 'display:block');
         document.querySelector(
             '#item_pickup_text').innerHTML = location.item_decision.item_decision_text;
         document.querySelector('#item_yes_button').
             addEventListener('click', function(evt) {
                 let item = getData('loot_item/' + location.item_decision.item_id);
-                document.querySelector('#current_item').innerHTML = `Current item: ${item}`
+                document.querySelector('#current_item').innerHTML = `Current item: ${location.item_decision.item_description}`
                 //registering new item in database
-                document.querySelector('#item_pickup').classList.add('hide');
+                document.querySelector('#item_pickup').setAttribute('style', 'display:none');
             });
         document.querySelector('#item_no_button').
             addEventListener('click', function(evt) {
@@ -111,14 +118,14 @@ function renderLocation(location) {
     }
 
     //encounter section
-    if (location.encounter.encounter_text !== '') {  // todo:only move when item picked up or denied and encounter is finished
-        document.querySelector('#item_pickup').classList.add('hide');
+    if (location.encounter.encounter_text !== 0) {  // todo:only move when item picked up or denied and encounter is finished
+        document.querySelector('#item_pickup').setAttribute('style', 'display:none');
         document.addEventListener('input', function(evt) {
             let riddleUserInput = document.getElementById(
                 'riddle_user_input').value;
             if (riddleUserInput.toLowerCase() ===
                 location.encounter.riddle_answer.toLowerCase()) {
-                document.querySelector('#item_pickup').classList.remove('hide');
+                document.querySelector('#item_pickup').setAttribute('style', 'display:block');
             } else {
                 if (riddleUserInput === '') {
                     document.querySelector('#riddle_correct_answer').
@@ -129,13 +136,13 @@ function renderLocation(location) {
                         location.encounter.riddle_answer;
                     document.querySelector('#riddle_correct_answer').
                         classList.
-                        remove('hide');
+                        setAttribute('style', 'display:block');
                 }
             }
 
         });
 
-        document.querySelector('#encounter').classList.remove('hide');
+        document.querySelector('#encounter').setAttribute('style', 'display:block');
         document.querySelector(
             '#encounter_text').innerHTML = location.encounter.encounter_text;
         document.querySelector(

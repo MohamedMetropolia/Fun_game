@@ -66,7 +66,7 @@ def create_player():
     return response
 
 
-@app.route('/loot_item/<item>', methods=["POST"])
+@app.route('/loot_item/<item>', methods=["POST", "GET"])
 def loot_item(item):
     player_name = get_player_name_from_request()
     loot_data = backend.loot_item(player_name, item)

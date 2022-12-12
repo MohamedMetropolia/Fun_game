@@ -148,7 +148,7 @@ class Main:
     def loot_item(self, player_name, item):
         sql = "UPDATE current_game SET inventory=%(item)s WHERE player=%(player_name)s"
         cursor = connection.cursor(dictionary=True, buffered=True)
-        cursor.execute(sql, {"name": player_name, "item": item})
+        cursor.execute(sql, {"player_name": player_name, "item": item})
         return cursor.lastrowid
 
     def add_user_stuff_to_location(self, location, username):
